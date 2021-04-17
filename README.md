@@ -1,4 +1,6 @@
 # hadoop-cluster-docker-centos
+## 使用
+现在集群配置了一主四从，可以修改slaves文件减少从节点数量
 ## 问题
 ### 问题1
 ```$’\r’: command not found:```
