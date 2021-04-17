@@ -5,19 +5,19 @@ MAINTAINER admin@dtssv.com
 WORKDIR /root
 
 # install jdk
-RUN yum -y update && yum install -y openssh-server wget which
+RUN yum -y update && yum install -y openssh-server openssh-clients wget which
 
 # install jdk
-RUN wget https://mirrors.tuna.tsinghua.edu.cn/AdoptOpenJDK/8/jdk/x64/linux/OpenJDK8U-jdk_x64_linux_hotspot_8u265b01.tar.gz && \
-    tar -zxvf OpenJDK8U-jdk_x64_linux_hotspot_8u265b01.tar.gz && \
-    mv jdk8u265-b01 /usr/local/java && \
-    rm OpenJDK8U-jdk_x64_linux_hotspot_8u265b01.tar.gz
+RUN wget https://mirrors.tuna.tsinghua.edu.cn/AdoptOpenJDK/8/jdk/x64/linux/OpenJDK8U-jdk_x64_linux_hotspot_8u282b08.tar.gz && \
+    tar -zxvf OpenJDK8U-jdk_x64_linux_hotspot_8u282b08.tar.gz && \
+    mv jdk8u282-b08 /usr/local/java && \
+    rm OpenJDK8U-jdk_x64_linux_hotspot_8u282b08.tar.gz
 
-# install hadoop 2.9.2
-RUN wget https://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/hadoop-2.9.2/hadoop-2.9.2.tar.gz && \
-    tar -xzvf hadoop-2.9.2.tar.gz && \
-    mv hadoop-2.9.2 /usr/local/hadoop && \
-    rm hadoop-2.9.2.tar.gz
+# install hadoop 2.10.1
+RUN wget https://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/hadoop-2.10.1/hadoop-2.10.1.tar.gz && \
+    tar -xzvf hadoop-2.10.1.tar.gz && \
+    mv hadoop-2.10.1 /usr/local/hadoop && \
+    rm hadoop-2.10.1.tar.gz
 
 # set environment variable
 ENV JAVA_HOME=/usr/local/java 
@@ -52,4 +52,4 @@ RUN chmod +x ~/start-hadoop.sh && \
 # format namenode
 RUN /usr/local/hadoop/bin/hdfs namenode -format
 
-CMD [ "sh", "-c", "service sshd start; bash"]
+CMD [ "sh", "-c", "systemctl start sshd; bash"]
