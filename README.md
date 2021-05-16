@@ -35,3 +35,4 @@ Linux Docker中无法使用 systemd(systemctl) 相关命令的原因是 1号进�
 #### 解决办法
 docker run -tid --name test --privileged=true ubuntu:18.04 /sbin/init
 --privilaged=true一定要加上的
+### 因为tuna上的镜像更新后导致构建失败，那么需要将hadoop和java的下载地址修改成现版本地址

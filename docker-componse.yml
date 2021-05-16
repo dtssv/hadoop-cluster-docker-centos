@@ -1,0 +1,13 @@
+version: 3
+services:
+  hadoop-master:
+    hostname: hadoop-master
+    container_name: hadoop-master
+    build: .
+    ports:
+      - "50070:50070"
+      - "9000:9000"
+    restart: always
+    networks:
+      - "hadoop"
+    privileged: true	
